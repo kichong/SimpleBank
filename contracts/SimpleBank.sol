@@ -44,6 +44,7 @@ contract SimpleBank {
       require(balances[msg.sender] >= withdrawAmount);
       remainingBal = balances[msg.sender] - withdrawAmount;
       balances[msg.sender] = remainingBal;
+      msg.sender.transfer(withdrawAmount);
       return remainingBal;
 
         /* If the sender's balance is at least the amount they want to withdraw,
